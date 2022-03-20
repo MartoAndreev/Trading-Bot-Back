@@ -11,6 +11,9 @@ export class User{
 
     @Column()
     password: string;
+    
+    // @Column()
+    // income: number;
 
     @AfterInsert()
     logInsert(){

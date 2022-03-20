@@ -1,7 +1,5 @@
-import { Body, Controller, Get, Patch, Param, Query } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import { AppService } from './app.service';
-import { CreateUserDto } from './users/dtos/create-user.dto';
-import { User } from './users/user.entity';
 
 
 @Controller()

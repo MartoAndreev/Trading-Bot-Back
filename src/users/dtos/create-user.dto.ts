@@ -1,4 +1,5 @@
 import {IsEmail, IsString} from 'class-validator';
+import { Column } from 'typeorm';
 
 export class CreateUserDto{
     @IsEmail()
@@ -6,5 +7,7 @@ export class CreateUserDto{
     
     @IsString()
     password: string;
+
     
+
 }
