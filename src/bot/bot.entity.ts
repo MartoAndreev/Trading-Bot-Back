@@ -2,31 +2,32 @@
 import { Entity, Column, PrimaryGeneratedColumn, AfterInsert, AfterUpdate, AfterRemove } from "typeorm";
 
 @Entity()
-export class User {
+export class Bot {
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    email: string;
+    user: string;
 
     @Column()
-    password: string;
+    currency: string;
 
-    // @Column()
-    // income: number;
+    @Column()
+    price: number;
+
 
     @AfterInsert()
     logInsert() {
-        console.log('Vuveden e User s ID', this.id);
+        console.log('Vuvedete User s ID', this.id);
     }
 
     @AfterUpdate()
     logUpdate() {
-        console.log('Obnoven e User s ID', this.id);
+        console.log('Obnovete User s ID', this.id);
     }
 
     @AfterRemove()
     logRemove() {
-        console.log('Premahnat e User s ID', this.id);
+        console.log('Premahnete User s ID', this.id);
     }
 }

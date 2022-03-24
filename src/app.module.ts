@@ -6,6 +6,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductEntity } from './products/product.entity';
 import { User } from './users/user.entity';
 import { UsersModule } from './users/user.module';
+import { Bot } from './bot/bot.entity';
+import { BotModule } from './bot/bot.module';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -15,11 +18,12 @@ import { UsersModule } from './users/user.module';
       //   username: 'root',
       //   password: 'root',
       database: 'db.sqlite',
-      entities: [ProductEntity, User],
+      entities: [ProductEntity, User, Bot],
       synchronize: true,
     }),
     ProductModule,
-    UsersModule
+    UsersModule,
+    BotModule //bokluk
 
   ],
   controllers: [AppController],

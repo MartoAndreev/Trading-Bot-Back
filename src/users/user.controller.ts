@@ -11,10 +11,14 @@ export class UsersController {
 
   @Post('/signup')
   createUser(@Body() body: CreateUserDto) {
-    console.log(body);
-
     this.usersService.create(body.email, body.password)
   }
+
+  @Post('/login')
+  loginUser(@Body() body: CreateUserDto) {
+    this.usersService.login(body.email, body.password)
+  }
+
   @Get('/:id')
   async findUser(@Param('id') id: string) {
     const user = await this.usersService.findOne(parseInt(id));
