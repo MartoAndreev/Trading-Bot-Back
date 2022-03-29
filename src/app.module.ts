@@ -8,6 +8,8 @@ import { User } from './users/user.entity';
 import { UsersModule } from './users/user.module';
 import { Bot } from './bot/bot.entity';
 import { BotModule } from './bot/bot.module';
+import { UsersCurrencyModule } from './users_currency/user_currency.module';
+import { Currency } from './users_currency/user_currency.entity';
 
 @Module({
   imports: [
@@ -18,12 +20,14 @@ import { BotModule } from './bot/bot.module';
       //   username: 'root',
       //   password: 'root',
       database: 'db.sqlite',
-      entities: [ProductEntity, User, Bot],
+      entities: [ProductEntity, User, Bot, Currency],
       synchronize: true,
     }),
+    UsersCurrencyModule,
     ProductModule,
     UsersModule,
-    BotModule //bokluk
+    BotModule,
+
 
   ],
   controllers: [AppController],

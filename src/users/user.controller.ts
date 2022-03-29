@@ -16,7 +16,7 @@ export class UsersController {
 
   @Post('/login')
   loginUser(@Body() body: CreateUserDto) {
-    this.usersService.login(body.email, body.password)
+    this.usersService.login(body.email, body.password);
   }
 
   @Get('/:id')
