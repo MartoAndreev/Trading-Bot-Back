@@ -19,6 +19,7 @@ export class BotController {
   @Delete('/:id')
   removeTrd(@Param('id') id: string) {
     return this.botService.remove(parseInt(id));
+  
   }
 
   @Get('/id/:id')
