@@ -1,0 +1,14 @@
+POST http://localhost:3000/bot/create
+content-type: application/json
+
+{
+    "user": "goshobosa",    
+    "currency": "uro",
+    "price": "12"
+}
+
+
+GET http://localhost:3000/user/1
+
+PATCH http://localhost:3000/user/2
+

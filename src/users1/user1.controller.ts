@@ -1,21 +1,21 @@
 import { Controller, Post, Body, Get, Param, Patch, Delete, Query, NotFoundException, UseInterceptors, ClassSerializerInterceptor } from "@nestjs/common";
 import { idText } from "typescript";
-import { CreateUserDto } from './dtos/create-user.dto';
-import { UsersService } from './users.service';
-import { UpdateUserDto } from "./dtos/update-user.dto";
+import { CreateUser1Dto, LoginUser1Dto } from './dtos/create-user1.dto';
+import { UsersService } from './users1.service';
+import { UpdateUser1Dto } from "./dtos/update-user1.dto";
 
 
-@Controller('user')
-export class UsersController {
+@Controller('user1')
+export class Users1Controller {
   constructor(private usersService: UsersService) { }
 
   @Post('/signup')
-  createUser(@Body() body: CreateUserDto) {
+  async createUser(@Body() body: CreateUser1Dto) {
     this.usersService.create(body.email, body.password, body.balance )
   }
 
   @Post('/login')
-  loginUser(@Body() body: CreateUserDto) {
+  async loginUser(@Body() body: LoginUser1Dto) {
     this.usersService.login(body.email, body.password);
   }
   
@@ -40,29 +40,27 @@ export class UsersController {
   }
 
   @Patch('/:id')
-  updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
+  updateUser(@Param('id') id: string, @Body() body: UpdateUser1Dto) {
     return this.usersService.update(parseInt(id), body);
   }
-
-
 
   // @Get()
   // getBalance(@Query('balance') balance: number) {
   //   return this.usersService.findBalace(balance);
   // }
 
-  // @Post('/balance')
-  // postBalace(@Body() body: CreateUserDto) {
-  //   this.usersService.balance(body.balance);
-  // }
+  @Post('/balance')
+  postBalace(@Body() body: CreateUser1Dto) {
+    this.usersService.balance(body.balance);
+  }
 
-  // @Delete('/balace')
-  // delBalance(@Param('balance') balance: number) {
-  //   return this.usersService.removeBalace(balance);
-  // }
-  // @Patch('/balace')
-  // updateBalance(@Param('balance') balance: number, @Body() body: UpdateUserDto) {
-  //   return this.usersService.updateBalance(balance, body);
-  // }
+  @Delete('/balance')
+  delBalance(@Param('balance') balance: number) {
+    return this.usersService.removeBalace(balance);
+  }
+  @Patch('/balance')
+  updateBalance(@Param('balance') balance: number, @Body() body: UpdateUser1Dto) {
+    return this.usersService.updateBalance(balance, body);
+  }
 
 }

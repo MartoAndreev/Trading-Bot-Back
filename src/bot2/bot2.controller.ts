@@ -1,17 +1,17 @@
 import { Controller, Post, Body, Get, Param, Patch, Delete, Query, NotFoundException } from "@nestjs/common";
 import { idText } from "typescript";
-import { CreateTrdDto } from './dtos/create-user.dto';
-import { BotService } from './bot.service';
+import { Create2TrdDto } from './dtos/create-user.dto';
+import { Bot2Service } from './bot2.service';
 import { UpdateUserDto } from "./dtos/update-user.dto";
 
 
-@Controller('bot')
-export class BotController {
-  constructor(private botService: BotService) { }
+@Controller('bot2')
+export class Bot2Controller {
+  constructor(private botService: Bot2Service) { }
 
   @Post('/create')
-  createTransaction(@Body() body: CreateTrdDto) {
-    this.botService.create(body.user, body.currency, body.price)
+  createTransaction(@Body() body: Create2TrdDto) {
+    this.botService.create(body.user, body.currency, body.price, body.action)
     return 'ok'
   }
 
@@ -41,7 +41,7 @@ export class BotController {
 
   @Get('/user/:user')
   async find3(@Param('user') user: string) {
-    const users = await this.botService.findUser((user));
+    const users = await this.botService.find((user));
     if (!users) {
       throw new NotFoundException('user not found');
     }

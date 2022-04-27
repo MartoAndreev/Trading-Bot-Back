@@ -1,56 +1,70 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { Repository } from "typeorm";
 import { InjectRepository } from '@nestjs/typeorm';
-import { Currency } from "./user_currency.entity";
+import { Bot2 } from "./bot2.entity";
 import { stringify } from "querystring";
 import { create } from "domain";
 import { isEmail } from "class-validator";
 
 @Injectable()
-export class UsersService {
-  constructor(@InjectRepository(Currency) private repo: Repository<Currency>) { }
+export class Bot2Service {
+  constructor(@InjectRepository(Bot2) private repo: Repository<Bot2>) { }
   
-  create(email: string, currencyName: string) {
-    const user = this.repo.create({ email, currencyName });
-    return this.repo.save(user);
+  create(user: string, currency: string, price: number,  action: string) {
+    
+    const trd = this.repo.create({ user, currency, price, action });
+    return this.repo.save(trd);
+    
   }
 
-  login(email: string, currencyName: string) {
-    const user = this.repo.find({ email, currencyName });
-    if (user) {
-      return true;
-    }
-    return false;
-  }
+  // login(user: string, currency: string, price: number) {
+  //   const trd = this.repo.find({ user, currency, price });
+  //   console.log(trd);
+  //   if (trd) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
-  findOne(id: number) {
+  findId(id: number) {
     return this.repo.findOne(id);
   }
 
-  findUser(currencyName: string) {
-    return this.repo.findOne({currencyName});
+  findCurrency(currency: string) {
+    return this.repo.findOne({currency});
+    
+    
+  } 
+
+  findUser(user: string) {
+
+    
+    return this.repo.find({user});
   }
 
-  find(email: string) {
-    return this.repo.find({ email });
+
+
+  find(user: string) {
+    return this.repo.find({ user });
   }
 
-  async update(id: number, attrs: Partial<Currency>) {
-    const user = await this.findOne(id);
+  async update(id: number, attrs: Partial<Bot2>) {
+    const user = await this.findId(id);
     if (!user) {
-      throw new NotFoundException('user not found');
+      throw new NotFoundException('bot not found');
     }
     Object.assign(user, attrs);
     return this.repo.save(user);
   }
 
   async remove(id: number) {
-    const user = await this.findOne(id);
+    const user = await this.findId(id);
     if (!user) {
-      throw new NotFoundException('user not found');
+      throw new NotFoundException('bot not found');
     }
     return this.repo.remove(user);
   }
+
 
   // create(email: string, password: string) {
   //     const user = this.repo.create({ email, password });

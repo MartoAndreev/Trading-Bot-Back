@@ -6,7 +6,6 @@ import { ProductsService } from './products.service';
 export class ProductsController {
     @Post('/signup')
     createProduct(@Body() body: CreateProductDto){
-        console.log(body);
     }
     // constructor(private readonly productsService: ProductsService) {
 
