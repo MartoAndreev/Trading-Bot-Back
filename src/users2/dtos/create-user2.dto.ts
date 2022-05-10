@@ -1,7 +1,7 @@
 import { IsEmail, IsNumber, IsString } from 'class-validator';
 import { Column } from 'typeorm';
 
-export class CreateUser1Dto {
+export class CreateUser2Dto {
 
     @IsEmail()
     email: string;
@@ -10,12 +10,12 @@ export class CreateUser1Dto {
     password: string;
 }
 
-export class LoginUser1Dto {
+// export class LoginUser1Dto {
 
-    @IsEmail()
-    email: string;
+//     @IsEmail()
+//     email: string;
 
-    @IsString()
-    password: string;
+//     @IsString()
+//     password: string;
     
-}
+//}

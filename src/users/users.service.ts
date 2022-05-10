@@ -10,7 +10,7 @@ import { isEmail } from "class-validator";
 export class UsersService {
   constructor(@InjectRepository(User) private repo: Repository<User>) { }
   
-  create(email: string, password: string, balance: number) {
+  create(email: string, password: string) {
     const user = this.repo.create({ email, password});
     return this.repo.save(user);
   }
@@ -23,14 +23,6 @@ export class UsersService {
     return false;
   }
 
-  // balance(balance: number) {
-  //   const user = this.repo.find({ balance });
-  //   console.log(user);
-  //   if (user) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
 
   findOne(id: number) {
     return this.repo.findOne(id);
@@ -58,26 +50,7 @@ export class UsersService {
   }
 
  
-  // findBalace(balance: number) {
-  //   return this.repo.findOne(balance);
-  // }
-  // async removeBalace(balance: number) {
-  //   const user = await this.findBalace(balance);
-  //   if (!user) {
-  //     throw new NotFoundException('user not found');
-  //   }
-  //   return this.repo.remove(user);
-  // }
-
-  // async updateBalance(balace: number, attrs: Partial<User>) {
-  //   const user = await this.findBalace(balace);
-  //   if (!user) {
-  //     throw new NotFoundException('user not found');
-  //   }
-  //   Object.assign(user, attrs);
-  //   return this.repo.save(user);
-  // }
-
+  
 
 
 

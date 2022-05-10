@@ -13,11 +13,7 @@ export class User {
     @Exclude()
     password: string;
 
-    // @Column()
-    // balance: number;
-
-    // @Column()
-    // income: number;
+ 
 
     @AfterInsert()
     logInsert() {

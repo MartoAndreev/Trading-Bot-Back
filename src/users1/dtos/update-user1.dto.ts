@@ -9,7 +9,5 @@ export class UpdateUser1Dto {
     @IsOptional()
     password: string;
 
-    @IsNumber()
-    @IsOptional()
-    balance: number;
+
 }

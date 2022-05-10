@@ -11,7 +11,7 @@ export class UsersController {
 
   @Post('/signup')
   createUser(@Body() body: CreateUserDto) {
-    this.usersService.create(body.email, body.password, body.balance )
+    this.usersService.create(body.email, body.password)
   }
 
   @Post('/login')
@@ -43,26 +43,5 @@ export class UsersController {
   updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
     return this.usersService.update(parseInt(id), body);
   }
-
-
-
-  // @Get()
-  // getBalance(@Query('balance') balance: number) {
-  //   return this.usersService.findBalace(balance);
-  // }
-
-  // @Post('/balance')
-  // postBalace(@Body() body: CreateUserDto) {
-  //   this.usersService.balance(body.balance);
-  // }
-
-  // @Delete('/balace')
-  // delBalance(@Param('balance') balance: number) {
-  //   return this.usersService.removeBalace(balance);
-  // }
-  // @Patch('/balace')
-  // updateBalance(@Param('balance') balance: number, @Body() body: UpdateUserDto) {
-  //   return this.usersService.updateBalance(balance, body);
-  // }
 
 }

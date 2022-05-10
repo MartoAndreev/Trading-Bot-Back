@@ -1,1 +1,3 @@
-SHOW CREATE TABLE bot2;
+INSERT INTO foreignKey(url, bot2)
+VALUES 
+(httpswww.google.com, 12);

@@ -15,6 +15,8 @@ import { Users1Module } from './users1/user1.module';
 import { Bot2Service } from './bot2/bot2.service';
 import { Bot2 } from './bot2/bot2.entity';
 import { Bot2Module } from './bot2/bot2.module';
+import { Users2Module } from './users2/user2.module';
+import { User2 } from './users2/user2.entity';
 
 @Module({
   imports: [
@@ -25,7 +27,7 @@ import { Bot2Module } from './bot2/bot2.module';
       //   username: 'root',
       //   password: 'root',
       database: 'db.sqlite',
-      entities: [ProductEntity, User, Bot, Currency, User1, Bot2],
+      entities: [ProductEntity, User, Bot, Currency, User1, Bot2, User2],
       synchronize: true,
     }),
     UsersCurrencyModule,
@@ -33,7 +35,8 @@ import { Bot2Module } from './bot2/bot2.module';
     UsersModule,
     BotModule,
     Users1Module,
-    Bot2Module
+    Bot2Module,
+    Users2Module
 
   ],
   controllers: [AppController],
